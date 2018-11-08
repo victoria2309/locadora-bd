@@ -2,10 +2,17 @@
 package DAO;
 
 import Modelo.Cliente;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 
-public class ClienteDAO {
+public class ClienteDAO extends ExecuteSQL{
+
+    public ClienteDAO(Connection con) {
+        super(con);
+    }
+    
     public String Inserir_Cliente(Cliente a){
        String sql  = "insert into cliente values(0,?,?,?,?,?,?,?,?)";
        try{
@@ -19,7 +26,7 @@ public class ClienteDAO {
        ps.setString(6, a.getTelefone());
        ps.setString(7, a.getBairro());
        ps.setString(8, a.getRua());
-       ps.setString(9, a.getNumero());
+       ps.setInt(9, a.getNumero());
        ps.setString(10, a.getCEP());
        
        if(ps.executeUpdate() > 0){
