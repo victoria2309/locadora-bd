@@ -17,7 +17,7 @@ public class ClienteDAO extends ExecuteSQL{
     }
     
     public String Inserir_Cliente(Cliente a){
-       String sql  = "insert into cliente values(0,?,?,?,?,?,?,?,?)";
+       String sql  = "insert into cliente values(0,?,?,?,?,?,?,?,?,?,?)";
        try{
        PreparedStatement ps = getCon().prepareStatement(sql);
        
@@ -149,6 +149,7 @@ public class ClienteDAO extends ExecuteSQL{
       }
       return Resultado;
     }
+   
     
     public List<Cliente>CapturarCliente(int cod){
         String sql = "select * from cliente where idcliente = " + cod +" ";

@@ -255,17 +255,21 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String Cod = jTextField1.getText();
+       
         String nome = jTF_Nome.getText();
         String nascimento = jTF_Nascimento.getText();
-        String cep = jTF_Cep.getText();
-        String rua = jTF_Rua.getText();
-        String numero = jTF_Numero.getText();
-        String bairro = jTF_Bairro.getText();
+        String rg = jTF_RG.getText();
+        String cpf = jTF_CPF.getText();
         String email = jTF_Email.getText();
         String fone = jTF_Telefone.getText();
-        String cpf = jTF_CPF.getText();
-        String rg = jTF_RG.getText();
+        String bairro = jTF_Bairro.getText();
+        String rua = jTF_Rua.getText();
+        String numero = jTF_Numero.getText();
+        String cep = jTF_Cep.getText();
+        
+        
+        
+        
         if(nome.equals("") || nascimento.equals("") || cep.equals("")
                 || rua.equals("") || numero.equals("") || bairro.equals("")
                 || fone.equals("") || cpf.equals("") || rg.equals("")){
@@ -276,9 +280,9 @@ public class CadastroCliente extends javax.swing.JFrame {
            Connection con = Conexao.AbrirConexao();
            ClienteDAO sql = new ClienteDAO(con);
            int n = Integer.parseInt(numero);
-           int Cods = Integer.parseInt(Cod);
+          
            Cliente a = new Cliente();
-           a.setCodigo(Cods);
+           
            a.setNome(nome);
            a.setNascimento(nascimento);
            a.setRG(rg);
@@ -291,8 +295,19 @@ public class CadastroCliente extends javax.swing.JFrame {
            a.setCEP(cep);
            
            
+          sql.Inserir_Cliente(a);
+          Conexao.FecharConexao(con);
           
-         
+            jTF_Nome.setText("");
+            jTF_Nascimento.setText("");
+            jTF_RG.setText("");
+            jTF_CPF.setText("");
+            jTF_Email.setText("");
+            jTF_Telefone.setText("");
+            jTF_Bairro.setText("");
+            jTF_Rua.setText("");
+            jTF_Numero.setText("");
+            jTF_Cep.setText("");
            
            
            JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso", "Vídeo Locadora", JOptionPane.INFORMATION_MESSAGE);
